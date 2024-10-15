@@ -1,0 +1,14 @@
+<h1>{{ title }}</h1>
+
+<!-- Input to add new items -->
+<input #newItemInput type="text" placeholder="Add new item">
+<button (click)="addItem(newItemInput.value); newItemInput.value=''">Add Item</button>
+
+<h2>Items and Count</h2>
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+<p>Total items: {{ getItemCount() }}</p>
+
+<!-- Passing items to child component and listening for removeItemEvent -->
+<app-child [items]="items" (removeItemEvent)="removeItem($event)"></app-child>
